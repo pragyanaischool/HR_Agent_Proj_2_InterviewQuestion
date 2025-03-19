@@ -1,8 +1,9 @@
 import streamlit as st
 import pdfplumber
-from llama_index.core import VectorStoreIndex
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.llms.groq import Groq
+from llama_index.core import VectorStoreIndex, Document
+
 
 import streamlit as st
 
