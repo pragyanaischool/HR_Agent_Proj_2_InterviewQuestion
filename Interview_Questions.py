@@ -87,7 +87,25 @@ if job_file and resume_file and candidate_name:
     # Show extracted text (optional for debugging)
     st.text_area("Extracted Job Description", job_description, height=150)
     st.text_area("Extracted Resume", resume_text, height=150)
-    
+
+    if st.button("Generate Interview Questions"):
+        # Generate Interview Questions
+        interview_questions = generate_interview_questions(candidate_name, job_description, resume_text)
+        
+        # Convert list of questions to formatted string
+        questions_text = "\n\n".join(interview_questions) if isinstance(interview_questions, list) else str(interview_questions)
+
+        # Display the generated questions
+        st.text_area("Generated Interview Questions", questions_text, height=400)
+
+        # Provide a download option
+        st.download_button(
+            label="Download Interview Questions",
+            data=questions_text.encode("utf-8"),  # Convert string to bytes
+            file_name=f"{candidate_name}_Interview_Questions.md",
+            mime="text/markdown",
+        )
+    '''
     if st.button("Generate Interview Questions"):
         # Generate Interview Questions
         interview_questions = generate_interview_questions(candidate_name, job_description, resume_text)
@@ -101,3 +119,4 @@ if job_file and resume_file and candidate_name:
             file_name=f"{job_title}_interviewQuestions.md",
             mime="text/markdown",
         )
+'''
