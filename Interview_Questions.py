@@ -22,16 +22,17 @@ def extract_text_from_pdf(pdf_file):
 
 def generate_interview_questions(candidate_name, job_description, resume_text):
     """Generates structured interview questions based on Job Description and Resume."""
-    # Convert job description into a Document object
-    
+    # Convert job description and resume text into Document objects
     job_doc = Document(text=job_description)
+    resume_doc = Document(text=resume_text)
 
     # Create a vector index from the document
     job_index = VectorStoreIndex.from_documents([job_doc], embed_model=embed_model)
     # Build Indexes
     #job_index = VectorStoreIndex.from_documents([job_description], embed_model=embed_model)
-    resume_index = VectorStoreIndex.from_documents([resume_text], embed_model=embed_model)
-    
+    #resume_index = VectorStoreIndex.from_documents([resume_text], embed_model=embed_model)
+    resume_index = VectorStoreIndex.from_documents([resume_doc], embed_model=embed_model)
+
     # Create Query Engines
     job_query_engine = job_index.as_query_engine(llm=llm)
     resume_query_engine = resume_index.as_query_engine(llm=llm)
