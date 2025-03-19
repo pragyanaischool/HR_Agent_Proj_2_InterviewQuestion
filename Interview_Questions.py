@@ -95,10 +95,9 @@ if job_file and resume_file and candidate_name:
         # Display the generated questions
         st.text_area("Generated Interview Questions", interview_questions, height=400)
 
-        # Provide a download button for saving the interview questions
         st.download_button(
-            label="Download Interview Questions as Markdown",
-            data=interview_questions,
-            file_name=f"{candidate_name}_Interview_Questions.md",
-            mime="text/markdown"
+            label="Download Job Description as Markdown",
+            data=interview_questions.encode("utf-8"),  # Convert string to bytes
+            file_name=f"{job_title}_interviewQuestions.md",
+            mime="text/markdown",
         )
