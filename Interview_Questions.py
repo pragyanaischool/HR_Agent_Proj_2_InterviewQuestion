@@ -10,7 +10,7 @@ GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 HUGGINGFACE_API_KEY = st.secrets["HUGGINGFACE_API_KEY"]
 
 # Initialize Hugging Face Embedding Model and LLM (Groq LLaMA)
-embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2",api_key=HUGGINGFACE_API_KEY)
+embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
 llm = Groq(model="llama3-8b-8192",api_key=GROQ_API_KEY)
 
 def extract_text_from_pdf(pdf_file):
