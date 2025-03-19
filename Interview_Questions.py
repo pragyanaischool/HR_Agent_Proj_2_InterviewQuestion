@@ -5,8 +5,6 @@ from llama_index.llms.groq import Groq
 from llama_index.core import VectorStoreIndex, Document
 
 
-import streamlit as st
-
 GROQ_API_KEY = st.secrets["GROQ_API_KEY"]
 HUGGINGFACE_API_KEY = st.secrets["HUGGINGFACE_API_KEY"]
 
@@ -72,8 +70,8 @@ def generate_interview_questions(candidate_name, job_description, resume_text):
     return response
 
 # Streamlit UI
-st.title("AI-Powered Interview Question Generator")
-
+st.title("PragyanAI' AI-Powered Interview Question Generator")
+st.image("")
 # Upload Job Description and Resume PDFs
 job_file = st.file_uploader("Upload Job Description (PDF)", type=["pdf"])
 resume_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
@@ -105,18 +103,3 @@ if job_file and resume_file and candidate_name:
             file_name=f"{candidate_name}_Interview_Questions.md",
             mime="text/markdown",
         )
-    '''
-    if st.button("Generate Interview Questions"):
-        # Generate Interview Questions
-        interview_questions = generate_interview_questions(candidate_name, job_description, resume_text)
-        
-        # Display the generated questions
-        st.text_area("Generated Interview Questions", interview_questions, height=400)
-
-        st.download_button(
-            label="Download Job Description as Markdown",
-            data=interview_questions.encode("utf-8"),  # Convert string to bytes
-            file_name=f"{job_title}_interviewQuestions.md",
-            mime="text/markdown",
-        )
-'''
