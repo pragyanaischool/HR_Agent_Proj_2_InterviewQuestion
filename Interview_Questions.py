@@ -71,7 +71,7 @@ def generate_interview_questions(candidate_name, job_description, resume_text):
 
 # Streamlit UI
 st.title("PragyanAI' AI-Powered Interview Question Generator")
-st.image("")
+st.image("PragyanAI_Transperent.png")
 # Upload Job Description and Resume PDFs
 job_file = st.file_uploader("Upload Job Description (PDF)", type=["pdf"])
 resume_file = st.file_uploader("Upload Resume (PDF)", type=["pdf"])
